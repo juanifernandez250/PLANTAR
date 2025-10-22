@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLAN.T.A.R. Río Gallegos · Folleto técnico (estilo revista + multimedia)</title>
+  <meta name="description" content="Folleto técnico web de la PTAR Río Gallegos (PLAN.T.A.R.) con diseño estilo revista, secciones ampliadas, tablas, notas normativas y módulos multimedia para insertar videos y renders. 100 % responsive para celulares." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f6f2; --paper:#ffffff; --ink:#0d0e10; --muted:#616366; --accent:#1f8f5b; --accent-2:#1a6ad8; --line:#e6e1d9; --danger:#b42318; --ok:#1a7f37;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --navH:56px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html,body{max-width:100%; overflow-x:hidden;}
+    body{margin:0; background:var(--bg); color:var(--ink); font-family:"Source Serif 4", serif; line-height:1.65;}
+    html{ scroll-padding-top: var(--navH); }
+    .section, .masthead{ scroll-margin-top: var(--navH); }
+
+    /* ======= Top bar / nav ======= */
+    .toolbar{position:sticky; top:0; z-index:50; background:rgba(247,246,242,.85); backdrop-filter: blur(8px); border-bottom:1px solid var(--line)}
+    .toolbar-inner{max-width:1200px; margin:auto; display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center; padding:8px 16px}
+    .brand{display:flex; align-items:center; gap:10px; font-family:Inter,system-ui,sans-serif}
+    .mark{width:28px; height:28px; display:grid; place-items:center; border-radius:0; background:transparent}
+    .mark-img{width:90%; height:90%; object-fit:contain; display:block}
+    .brand strong{white-space:nowrap}
+
+    .menu-btn{display:none; align-items:center; gap:8px; appearance:none; border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:999px; font-family:Inter,system-ui,sans-serif; cursor:pointer}
+    .menu-btn:hover{box-shadow:var(--shadow)}
+
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-family:Inter; font-size:14px; padding:8px 14px; border-radius:999px; color:inherit; text-decoration:none; border:1px solid var(--line)}
+    .nav a:hover{box-shadow:var(--shadow)}
+    /* Botones estilo CTA */
+    .nav a.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .nav a.secondary{background:#fff;}
+
+    /* ======= Wrapper ======= */
+    .sheet{max-width:1200px; margin:18px auto 80px; background:var(--paper); box-shadow:var(--shadow); border:1px solid var(--line)}
+    .sheet header{
+      display:grid; grid-template-columns: 1.35fr .9fr; gap:28px; padding:28px; border-bottom:1px solid var(--line);
+      align-items: stretch;
+    }
+    .masthead h1{font-family:"Playfair Display", serif; font-size: clamp(28px, 3.6vw, 52px); line-height:1.08; margin:0 0 6px}
+    .masthead .subtitle{font-size: clamp(16px, 1.7vw, 20px); color:var(--muted); margin:0 0 8px}
+    .masthead .meta{font-family:Inter; color:var(--muted); font-size:14px}
+
+    /* ======= Encabezado: imagen (hero) ======= */
+    .ph{
+      position: relative;
+      aspect-ratio: 16 / 9;
+      min-height: 180px;
+      max-height: clamp(180px, 38vh, 420px);
+      background:linear-gradient(135deg,#eef7f1,#f6fbff);
+      border:1px solid var(--line); border-radius:16px;
+      overflow:hidden;
+      color:#386c54; font-family:Inter; font-weight:600;
+    }
+    .ph img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      object-position:center 45%;
+      display:block;
+    }
+
+    /* ======= Layout contenido (main + aside) ======= */
+    .content{display:grid; grid-template-columns: 1fr 340px; gap:30px; padding:24px 28px}
+
+    /* Texto en UNA sola columna */
+    .columns{columns: auto 1; column-gap:0}
+    @media (min-width:1200px){ .columns{columns:auto 1;} }
+
+    .section{break-inside: avoid; margin:0 0 24px}
+    .section h2{font-family:"Playfair Display", serif; font-size:22px; margin:0 0 8px; line-height:1.2}
+    .kicker{letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-family:Inter; font-weight:600; font-size:12px}
+    .dropcap:first-letter{float:left; font-family:"Playfair Display", serif; font-size:54px; line-height:.85; padding:8px 10px 0 2px; color:var(--accent)}
+
+    /* ======= Sidebar ======= */
+    aside{position:sticky; top:72px; align-self:start; border-left:1px solid var(--line); padding-left:24px}
+    .card{border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:#fff; box-shadow: var(--shadow); margin-bottom:16px}
+    .card h3{margin:0 0 6px; font-size:16px; font-family:Inter;}
+    .stats{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+    .stat{border:1px dashed var(--line); border-radius:10px; padding:8px 10px}
+    .stat b{display:block; font-family:Inter; font-size:13px; color:var(--muted)}
+    .stat span{font-weight:700}
+    .kpis{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+    .kpi{border:1px solid var(--line); border-radius:10px; padding:8px 10px; background:#f9fbf9}
+    .kpi b{font-family:Inter; font-size:12px; color:var(--muted)}
+    .kpi span{font-weight:700; color:var(--ok)}
+
+    /* ======= Pull quote ======= */
+    blockquote{font-family:"Playfair Display"; font-size:22px; margin:14px 0; padding:10px 16px; border-left:4px solid var(--accent); background: #f2f8f5}
+
+    /* ======= Media ======= */
+    figure{break-inside: avoid; margin:12px 0}
+    figcaption{font-size:12px; color:var(--muted); margin-top:6px}
+    .media-grid{display:grid; grid-template-columns:1fr; gap:14px}
+    @media (min-width: 780px){ .media-grid{grid-template-columns:1fr 1fr}}
+    .video-card{border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow)}
+    .video-wrap{position:relative; padding-top:56.25%; background:#000}
+    .video-wrap iframe,.video-wrap video{position:absolute; inset:0; width:100%; height:100%;}
+    .video-meta{padding:10px 12px; font-family:Inter; font-size:13px; color:var(--muted)}
+
+    /* ======= Tablas ======= */
+    .table-wrap{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:10px}
+    .table-hint{font:12px Inter,system-ui; color:var(--muted); padding:6px 8px}
+    table{min-width:640px; width:100%; border-collapse:separate; border-spacing:0; font-size:14px}
+    th,td{border:1px solid var(--line); padding:8px 10px; background:#fff}
+    th{background:#f7faf8; text-align:left; font-family:Inter}
+    .note{font-size:12px; color:var(--muted)}
+
+    /* ======= Tabs ======= */
+    .tabs{border:1px solid var(--line); border-radius:12px; overflow:hidden; margin:12px 0; background:#fff}
+    .tab-head{display:flex; gap:6px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding:8px}
+    .tab-head button{appearance:none; border:1px solid var(--line); background:#fff; padding:10px 12px; border-radius:999px; font-family:Inter; cursor:pointer}
+    .tab-head button.active{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .tab-page{display:none; padding:12px}
+    .tab-page.active{display:block}
+
+    /* ======= Footer ======= */
+    footer{border-top:1px solid var(--line); padding:16px 28px; display:flex; gap:10px; justify-content:space-between; align-items:center; font-family:Inter; color:var(--muted)}
+    .footer-brand{display:flex; align-items:center; gap:10px}
+    .footer-logo{height:22px; width:auto; display:block}
+
+    /* ======= Justificado ======= */
+    .columns p,
+    .columns li,
+    aside p,
+    aside li,
+    .masthead .subtitle,
+    .masthead .meta,
+    blockquote,
+    figcaption,
+    .video-meta,
+    .note{
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    /* ======= Print (A4) ======= */
+    @page{ size: A4; margin:12mm }
+    @media print{
+      .toolbar{display:none}
+      body{background:#fff}
+      .sheet{box-shadow:none; border:none;}
+      .content{grid-template-columns: 1fr .85fr; gap:18px}
+      .columns{columns:auto 1; column-gap:0}
+      aside{top:0}
+      a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px}
+    }
+
+    /* ======= Responsive ======= */
+    @media (max-width: 980px){
+      .sheet{margin:12px auto 64px;}
+      .sheet header{grid-template-columns: 1fr; padding:18px; gap:16px}
+      .content{grid-template-columns: 1fr; gap:18px; padding:16px}
+      aside{position:static; border-left:none; padding-left:0; margin-top:8px}
+
+      .toolbar-inner{grid-template-columns:auto 1fr; gap:8px}
+      .menu-btn{display:inline-flex}
+
+      /* Menú hamburguesa como dropdown vertical (2 botones) */
+      .nav{display:none;}
+      .nav.open{
+        display:flex; flex-direction:column; gap:8px;
+        background:#fff; border:1px solid var(--line); border-radius:12px;
+        padding:10px; margin-top:8px;
+        grid-column:1 / -1; width:100%;
+        white-space: normal;
+        box-shadow: var(--shadow);
+      }
+      .nav a{display:block; width:100%; text-align:center;}
+      .nav a.primary{order:0}
+      .nav a.secondary{order:1}
+
+      .masthead h1{font-size: clamp(22px, 6vw, 32px)}
+      .masthead .subtitle{font-size: 14px}
+      .ph{aspect-ratio: 16 / 9; min-height: 0; max-height: 48vh}
+      .table-wrap{border-radius:8px}
+      th,td{font-size:13px}
+      .kpis{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 560px){
+      .toolbar-inner{padding:8px 12px}
+      .brand strong{white-space:normal;}
+      footer{flex-direction:column; align-items:flex-start; gap:6px}
+      .kpi span,.stat span{font-size:14px}
+      .video-meta{font-size:12px}
+      .nav a{padding:10px}
+      .ph{max-height:42vh; border-radius:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="brand">
+        <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">☰ Menú</button>
+        <div class="mark">
+          <img src="Logo-2D-sin-texto.png" alt="PLAN.T.A.R." class="mark-img" loading="lazy" decoding="async">
+        </div>
+        <strong>PLAN.T.A.R. Río Gallegos</strong>
+      </div>
+
+      <!-- NAV: solo dos botones a portales -->
+      <nav id="site-nav" class="nav" aria-label="Accesos a Portales">
+        <a class="primary" href="/Usuarios/main.html">Portal Ciudadano</a>
+        <a class="secondary" href="/Personal/index.html">Portal Operativo</a>
+      </nav>
+    </div>
+  </div>
+
+  <article class="sheet">
+    <header>
+      <div class="masthead">
+        <h1>Folleto técnico de la PLAN.T.A.R. Río Gallegos</h1>
+        <p class="subtitle">Agua limpia, futuro seguro.</p>
+        <p class="meta">Proyecto PLAN.T.A.R. · FERNANDEZ JUAN IGNACIO · UTN-FRSC · 2025</p>
+      </div>
+      <div class="ph">
+        <img src="Modelo3D.png"
+             alt="Vista general del modelo 3D de la PTAR Río Gallegos"
+             loading="lazy" decoding="async">
+      </div>
+    </header>
+
+    <section class="content">
+      <main class="columns">
+
+        <section class="section" id="proposito">
+          <div class="kicker">Propósito</div>
+          <h2>¿Qué es y para qué sirve?</h2>
+          <p class="dropcap">La planta <strong>protege la salud pública y el ambiente</strong> al depurar los efluentes cloacales de la ciudad. El <strong>diseño se realiza</strong> con criterios normativos nacionales y <strong>la obra se construirá</strong> en módulos escalables que acompañarán el crecimiento urbano, minimizando riesgos y costos.</p>
+          <blockquote>Una infraestructura esencial, normalmente invisible, que garantiza salud, ambiente y desarrollo local.</blockquote>
+        </section>
+
+        <section class="section" id="alcance">
+          <div class="kicker">Alcance</div>
+          <h2>Capacidad y esquema</h2>
+          <ul>
+            <li><strong>Población de diseño:</strong> 200 000 habitantes (horizonte 20 años).</li>
+            <li><strong>Cobertura:</strong> área urbana y periurbana.</li>
+            <li><strong>Hidráulica:</strong> tránsito por gravedad desde pretratamiento a desinfección; bombeos sólo auxiliares.</li>
+            <li><strong>Flexibilidad:</strong> configuración modular y paralela por unidades.</li>
+          </ul>
+          <figure>
+            <img src="layout.png" alt="Implantación referencial y flujos internos" style="width:100%; height:100%; object-fit:contain; display:block;" loading="lazy" decoding="async">
+            <figcaption>Implantación referencial y flujos internos.</figcaption>
+          </figure>
+        </section>
+
+        <section class="section" id="proceso">
+          <div class="kicker">Proceso</div>
+          <h2>Línea líquida</h2>
+          <ol>
+            <li><strong>Pretratamiento:</strong> cámara de llegada; rejas finas de 12 mm (manuales + cestos); medición de caudal <span class="note"></span>.</li>
+            <li><strong>Desarenado–desengrasado (×2):</strong> extracción mecánica con puente barredor <span class="note"></span>.</li>
+            <li><strong>Zanjas de oxidación (×6):</strong> aireación por rotores; control de oxígeno disuelto; recirculación interna; criterios para clima frío. <span class="note">F/M ≈ 0,05 kg DBO5/kg SSTA; X ≈ 4 kg SSTA/m³.</span></li>
+            <li><strong>Sedimentación secundaria (×3):</strong> clarificadores circulares con rasquetas; retorno de lodos <span class="note"></span>.</li>
+            <li><strong>Desinfección:</strong> cámara de contacto con cloro (serpentina) con demanda y t* asegurados <span class="note"></span>.</li>
+          </ol>
+
+          <div class="tabs" aria-label="Vista por líneas">
+            <div class="tab-head">
+              <button class="active" data-tab="t-liquida">Diagrama – Línea líquida</button>
+              <button data-tab="t-hidraulica">Hidráulica y control</button>
+              <button data-tab="t-seguridad">Seguridad de proceso</button>
+            </div>
+            <div id="t-liquida" class="tab-page active">
+              <!-- Espacio para diagrama -->
+            </div>
+            <div id="t-hidraulica" class="tab-page">
+              <div class="table-wrap">
+                <div class="table-hint">Deslizar ↔</div>
+                <table>
+                  <thead><tr><th>Unidad</th><th>Condición</th><th>Nota</th></tr></thead>
+                  <tbody>
+                    <tr><td>Canales</td><td>Gravedad, régimen subcrítico</td><td>Velocidad no erosiva</td></tr>
+                    <tr><td>Bypasses</td><td>Por unidad</td><td>Mantenimiento sin paro</td></tr>
+                    <tr><td>Medición</td><td>Canal Parshall / vertedero</td><td>Registro y telemetría</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div id="t-seguridad" class="tab-page">
+              <ul>
+                <li>Barandas, pasarelas, líneas de vida y puntos de rescate.</li>
+                <li>Duchas y lavaojos en proximidad a cloración.</li>
+                <li>Señalética y exclusión de zonas de atrapamiento en rotores.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="lodos">
+          <div class="kicker">Sólidos</div>
+          <h2>Tratamiento de lodos</h2>
+          <ul>
+            <li><strong>Origen:</strong> lodos secundarios de clarificadores.</li>
+            <li><strong>Espesamiento por gravedad:</strong> unidad circular <span class="note">(ENOHSA, 11.16)</span>.</li>
+            <li><strong>Lechos de secado:</strong> batería drenada en paralelo (capa ≈ 0,25 m).</li>
+            <li><strong>Gestión final:</strong> disposición en sitio autorizado y/o aprovechamiento como enmienda conforme requisitos sanitarios.</li>
+          </ul>
+        </section>
+
+        <section class="section" id="energia">
+          <div class="kicker">Gestión y O&amp;M</div>
+          <h2>Energía y operación</h2>
+          <ul>
+            <li><strong>Energía:</strong> la aireación constituye el principal consumo; se prevén variadores, control por DO y operación por etapas.</li>
+            <li><strong>O&amp;M:</strong> rutinas estandarizadas, repuestos críticos, plan de calibración y manuales de seguridad.</li>
+            <li><strong>Operación:</strong> organismo prestador local; se admite concesión/cooperativa.</li>
+          </ul>
+
+          <div class="tabs" aria-label="Estrategias de eficiencia">
+            <div class="tab-head">
+              <button class="active" data-tab="t-aireacion">Aireación</button>
+              <button data-tab="t-automatizacion">Automatización</button>
+              <button data-tab="t-invierno">Plan de invierno</button>
+            </div>
+            <div id="t-aireacion" class="tab-page active">
+              <ul>
+                <li>Rotores con VFD.</li>
+                <li>Estrategias de ciclo.</li>
+                <li>Mantenimiento preventivo de sellos y rodamientos.</li>
+              </ul>
+            </div>
+            <div id="t-automatizacion" class="tab-page">
+              <ul>
+                <li>Telemetría de caudal, DO, pH, temperatura.</li>
+                <li>Alarmas por estación.</li>
+                <li>Históricos y reporte mensual de KPIs.</li>
+              </ul>
+            </div>
+            <div id="t-invierno" class="tab-page">
+              <ul>
+                <li>Plan de contingencias por congelamiento superficial.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="impacto">
+          <div class="kicker">Metas</div>
+          <h2>Desempeño esperado</h2>
+          <ul>
+            <li>Remociones globales de DBO5 y SST &gt; 85 % (zanjas + clarificación).</li>
+            <li>Desinfección: cumplimiento bacteriológico vía demanda + tiempo de contacto.</li>
+            <li>Control de olores: pretratamiento confinado y gestión de grasas.</li>
+          </ul>
+        </section>
+
+        <section class="section" id="normativa">
+          <div class="kicker">Normativa</div>
+          <h2>Notas técnicas (APA en cuerpo)</h2>
+          <ol>
+            <li>ENOHSA. (s. f.). <em>Normas de estudio, criterios de diseño y presentación de proyectos de desagües cloacales</em>. Tomo II: rejas (11.2.7), desarenado (11.3.6), clarificación (11.4.3), zanjas de oxidación (11.9.3), desinfección (11.17), lodos (11.16).</li>
+            <li>Metcalf &amp; Eddy, Inc. (2014). <em>Wastewater Engineering: Treatment and Resource Recovery</em> (5ª ed.). McGraw-Hill.</li>
+            <li>UTN-FRSC. (2025). <em>Memorias técnicas internas del Proyecto PLAN.T.A.R.</em>.</li>
+          </ol>
+        </section>
+
+        <section class="section" id="multimedia">
+          <div class="kicker">Multimedia</div>
+          <h2>Videos explicativos (Generados con Notebook LM)</h2>
+          <div class="media-grid">
+            <div class="video-card">
+              <div class="video-wrap">
+                <iframe
+                  src="https://player.vimeo.com/video/1129339606?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                  title="Gestion_Video"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  loading="lazy"></iframe>
+              </div>
+              <div class="video-meta">Video resumen del proyecto PLAN.T.A.R. Río Gallegos: objetivo, proceso y beneficios de la nueva planta de tratamiento cloacal, con foco en operación y gestión.</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-wrap">
+                <iframe
+                  src="https://player.vimeo.com/video/1129343187?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                  title="Analisis_Economico_Video"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  loading="lazy"></iframe>
+              </div>
+              <div class="video-meta">Video resumen del proyecto PLAN.T.A.R. Río Gallegos con foco en el análisis económico.</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-wrap">
+                <iframe
+                  src="https://player.vimeo.com/video/1129344542?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                  title="Render_Clarificador"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  loading="lazy"></iframe>
+              </div>
+              <div class="video-meta">Render 2 – Clarificador secundario con puente y rasquetas.</div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card">
+          <h3>Ficha técnica rápida</h3>
+          <div class="stats">
+            <div class="stat"><b>Población</b><span>200 000 hab</span></div>
+            <div class="stat"><b>Horizonte</b><span>20 años</span></div>
+            <div class="stat"><b>Caudal</b><span>0,801 m³/s</span></div>
+            <div class="stat"><b>Energía</b><span>6 664 608 kWh/año</span></div>
+            <div class="stat"><b>Rejas</b><span>12 mm</span></div>
+            <div class="stat"><b>Lechos</b><span>Capa 0,25 m</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Normativa aplicada</h3>
+          <p>ENOHSA Tomo I y II: rejas (11.2.7), desarenado (11.3.6), clarificación (11.4.3), zanjas de oxidación (11.9.3), desinfección (11.17), lodos (11.16).</p>
+        </div>
+
+        <div class="card">
+          <h3>Seguridad y ambiente</h3>
+          <ul>
+            <li>Barandas y pasarelas en altura.</li>
+            <li>Señalética, duchas, kits de derrames.</li>
+            <li>Gestión de cribados, arenas y grasas.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div class="footer-brand">
+        <img class="footer-logo" src="Logo-2D-sin-texto.png" alt="PLAN.T.A.R." loading="lazy" decoding="async"/>
+        <span>PLAN.T.A.R. Río Gallegos · Folleto técnico web</span>
+      </div>
+      <span>© 2025</span>
+    </footer>
+  </article>
+
+  <script>
+    // Navegación suave SOLO para anclas (#...) — no afecta los portales
+    document.querySelectorAll('.nav a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        if(id && id.startsWith('#')){
+          e.preventDefault();
+          const target=document.querySelector(id);
+          if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    });
+
+    // Menú responsive
+    const menuBtn=document.querySelector('.menu-btn');
+    const nav=document.getElementById('site-nav');
+    menuBtn.addEventListener('click',()=>{
+      const open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open?'true':'false');
+    });
+    window.addEventListener('resize',()=>{
+      if(window.matchMedia('(min-width: 981px)').matches){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // Tests mínimos (no intrusivos)
+    console.assert(document.querySelector('.brand strong')?.textContent.includes('PLAN.T.A.R.'), 'Brand debe decir PLAN.T.A.R.');
+    console.assert(!!document.querySelector('#site-nav'), 'La navegación principal debe existir');
+  </script>
+</body>
+</html>
