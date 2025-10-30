@@ -9,6 +9,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"PLAN.T.A.R. Río Gallegos – Resumen de Proyecto",
+    "author":{"@type":"Person","name":"Juan Ignacio Fernández"},
+    "publisher":{"@type":"Organization","name":"UTN-FRSC"},
+    "inLanguage":"es-AR"
+  }
+  </script>
+
   <style>
   :root{
     --bg:#f7f6f2;
@@ -22,7 +33,7 @@
     --ok:#1a7f37;
     --shadow: 0 10px 30px rgba(0,0,0,.08);
     --navH:56px;
-    --pdfH: 80vh; /* altura del visor PDF */
+    --pdfH: 80vh;
   }
 
   *{box-sizing:border-box}
@@ -30,86 +41,43 @@
   html,body{max-width:100%; overflow-x:hidden;}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:"Source Serif 4", serif;
-    line-height:1.65;
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Source Serif 4", serif; line-height:1.65;
   }
+  @media (max-width:980px){ body{ padding-bottom:76px } }
 
   html{ scroll-padding-top: var(--navH); }
-  .section, .masthead{ scroll-margin-top: var(--navH); }
+  .section,.masthead{ scroll-margin-top: var(--navH); }
+  .section{ content-visibility:auto; contain-intrinsic-size:1px 600px }
 
   /* ======= Top bar / nav ======= */
   .toolbar{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(247,246,242,.85);
-    backdrop-filter: blur(8px);
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,246,242,.85); backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
-    padding-top: env(safe-area-inset-top, 0px);
+    padding-top:env(safe-area-inset-top,0px);
   }
   .toolbar-inner{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:auto 1fr;
-    gap:12px;
-    align-items:center;
-    padding:8px 16px
+    max-width:1200px; margin:auto;
+    display:grid; grid-template-columns:auto 1fr auto;
+    gap:12px; align-items:center; padding:8px 16px;
   }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-family:Inter,system-ui,sans-serif
-  }
-  .mark{
-    width:28px;
-    height:28px;
-    display:grid;
-    place-items:center;
-    background:transparent
-  }
-  .mark-img{
-    width:90%;
-    height:90%;
-    object-fit:contain;
-    display:block
-  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:Inter,system-ui,sans-serif}
+  .mark{width:28px; height:28px; display:grid; place-items:center; background:transparent}
+  .mark-img{width:90%; height:90%; object-fit:contain; display:block}
   .brand strong{white-space:nowrap}
 
   .menu-btn{
-    display:none;
-    align-items:center;
-    gap:8px;
-    appearance:none;
-    border:1px solid var(--line);
-    background:#fff;
-    padding:10px 14px;
-    border-radius:999px;
-    font-family:Inter,system-ui,sans-serif;
-    cursor:pointer;
-    touch-action: manipulation;
+    display:none; align-items:center; gap:8px;
+    appearance:none; border:1px solid var(--line); background:#fff;
+    padding:10px 14px; border-radius:999px; font-family:Inter,system-ui,sans-serif; cursor:pointer;
   }
   .menu-btn:hover{box-shadow:var(--shadow)}
 
-  .nav{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    justify-content:flex-end
-  }
+  .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
   .nav a{
-    font-family:Inter,system-ui,sans-serif;
-    font-size:14px;
-    padding:8px 14px;
-    border-radius:999px;
-    color:inherit;
-    text-decoration:none;
-    border:1px solid var(--line);
-    touch-action: manipulation;
+    font-family:Inter,system-ui,sans-serif; font-size:14px;
+    padding:8px 14px; border-radius:999px; color:inherit; text-decoration:none; border:1px solid var(--line);
   }
   .nav a:hover{box-shadow:var(--shadow)}
   .nav a.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
@@ -117,108 +85,38 @@
 
   /* ======= Wrapper ======= */
   .sheet{
-    max-width:1200px;
-    margin:18px auto 80px;
-    background:var(--paper);
-    box-shadow:var(--shadow);
-    border:1px solid var(--line)
+    max-width:1200px; margin:18px auto 80px; background:var(--paper);
+    box-shadow:var(--shadow); border:1px solid var(--line)
   }
   .sheet header{
-    display:grid;
-    grid-template-columns: 1.35fr .9fr;
-    gap:28px;
-    padding:28px;
-    border-bottom:1px solid var(--line);
-    align-items: stretch;
+    display:grid; grid-template-columns:1.35fr .9fr; gap:28px; padding:28px;
+    border-bottom:1px solid var(--line); align-items:stretch;
   }
-  .masthead h1{
-    font-family:"Playfair Display", serif;
-    font-size: clamp(28px, 3.6vw, 52px);
-    line-height:1.08;
-    margin:0 0 6px
-  }
-  .masthead .subtitle{
-    font-size: clamp(16px, 1.7vw, 20px);
-    color:var(--muted);
-    margin:0 0 8px
-  }
+  .masthead h1{font-family:"Playfair Display",serif; font-size:clamp(28px,3.6vw,52px); line-height:1.08; margin:0 0 6px}
+  .masthead .subtitle{font-size:clamp(16px,1.7vw,20px); color:var(--muted); margin:0 0 8px}
   .masthead .meta{font-family:Inter,system-ui; color:var(--muted); font-size:14px}
 
   /* ======= Encabezado: imagen ======= */
   .ph{
-    position: relative;
-    aspect-ratio: 16 / 9;
-    min-height: 180px;
-    max-height: clamp(180px, 38vh, 420px);
+    position:relative; aspect-ratio:16/9; min-height:180px; max-height:clamp(180px,38vh,420px);
     background:linear-gradient(135deg,#eef7f1,#f6fbff);
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
-    color:#386c54;
-    font-family:Inter,system-ui;
-    font-weight:600;
+    border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    color:#386c54; font-family:Inter,system-ui; font-weight:600;
   }
-  .ph img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 45%;
-    display:block;
-  }
+  .ph img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 45%; display:block}
 
   /* ======= Layout contenido ======= */
-  .content{
-    display:grid;
-    grid-template-columns: 1fr 340px;
-    gap:30px;
-    padding:24px 28px
-  }
-  .columns{columns: auto 1; column-gap:0}
-  @media (min-width:1200px){
-    .columns{columns:auto 1;}
-  }
-  .section{break-inside: avoid; margin:0 0 24px}
-  .section h2{
-    font-family:"Playfair Display", serif;
-    font-size:22px;
-    margin:0 0 8px;
-    line-height:1.2
-  }
-  .kicker{
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-family:Inter,system-ui;
-    font-weight:600;
-    font-size:12px
-  }
-  .dropcap:first-letter{
-    float:left;
-    font-family:"Playfair Display", serif;
-    font-size:54px;
-    line-height:.85;
-    padding:8px 10px 0 2px;
-    color:var(--accent)
-  }
+  .content{display:grid; grid-template-columns:1fr 340px; gap:30px; padding:24px 28px}
+  .columns{columns:auto 1; column-gap:0}
+  @media (min-width:1200px){ .columns{columns:auto 1;} }
+  .section{break-inside:avoid; margin:0 0 24px}
+  .section h2{font-family:"Playfair Display",serif; font-size:22px; margin:0 0 8px; line-height:1.2}
+  .kicker{letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-family:Inter,system-ui; font-weight:600; font-size:12px}
+  .dropcap:first-letter{float:left; font-family:"Playfair Display",serif; font-size:54px; line-height:.85; padding:8px 10px 0 2px; color:var(--accent)}
 
   /* ======= Sidebar ======= */
-  aside{
-    position:sticky;
-    top:72px;
-    align-self:start;
-    border-left:1px solid var(--line);
-    padding-left:24px
-  }
-  .card{
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:14px 16px;
-    background:#fff;
-    box-shadow: var(--shadow);
-    margin-bottom:16px
-  }
+  aside{position:sticky; top:72px; align-self:start; border-left:1px solid var(--line); padding-left:24px}
+  .card{border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:#fff; box-shadow:var(--shadow); margin-bottom:16px}
   .card h3{margin:0 0 6px; font-size:16px; font-family:Inter,system-ui;}
   .stats{display:grid; grid-template-columns:1fr 1fr; gap:8px}
   .stat{border:1px dashed var(--line); border-radius:10px; padding:8px 10px}
@@ -230,215 +128,151 @@
   .kpi span{font-weight:700; color:var(--ok)}
 
   /* ======= Pull quote ======= */
-  blockquote{
-    font-family:"Playfair Display", serif;
-    font-size:22px;
-    margin:14px 0;
-    padding:10px 16px;
-    border-left:4px solid var(--accent);
-    background: #f2f8f5
-  }
+  blockquote{font-family:"Playfair Display",serif; font-size:22px; margin:14px 0; padding:10px 16px; border-left:4px solid var(--accent); background:#f2f8f5}
 
   /* ======= Media ======= */
-  figure{break-inside: avoid; margin:12px 0}
+  figure{break-inside:avoid; margin:12px 0}
   figcaption{font-size:12px; color:var(--muted); margin-top:6px}
   .media-grid{display:grid; grid-template-columns:1fr; gap:14px}
-  @media (min-width: 780px){
-    .media-grid{grid-template-columns:1fr 1fr}
-  }
-  .video-card{
-    border:1px solid var(--line);
-    border-radius:12px;
-    overflow:hidden;
-    background:#fff;
-    box-shadow:var(--shadow)
-  }
+  @media (min-width:780px){ .media-grid{grid-template-columns:1fr 1fr} }
+  .video-card{border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow)}
   .video-wrap{position:relative; padding-top:56.25%; background:#000}
   .video-wrap iframe,.video-wrap video{position:absolute; inset:0; width:100%; height:100%;}
   .video-meta{padding:10px 12px; font-family:Inter,system-ui; font-size:13px; color:var(--muted)}
 
   /* ======= Tablas ======= */
-  .table-wrap{
-    width:100%;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    border:1px solid var(--line);
-    border-radius:10px
-  }
+  .table-wrap{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:10px}
   .table-hint{font:12px Inter,system-ui; color:var(--muted); padding:6px 8px}
-  table{
-    min-width:640px;
-    width:100%;
-    border-collapse:separate;
-    border-spacing:0;
-    font-size:14px
-  }
+  table{min-width:640px; width:100%; border-collapse:separate; border-spacing:0; font-size:14px}
   th,td{border:1px solid var(--line); padding:8px 10px; background:#fff}
   th{background:#f7faf8; text-align:left; font-family:Inter,system-ui}
   .note{font-size:12px; color:var(--muted)}
 
-  /* ======= Tabs ======= */
-  .tabs{
-    border:1px solid var(--line);
-    border-radius:12px;
-    overflow:hidden;
-    margin:12px 0;
-    background:#fff
-  }
-  .tab-head{display:flex; gap:6px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding:8px}
-  .tab-head button{
-    appearance:none;
-    border:1px solid var(--line);
-    background:#fff;
-    padding:10px 12px;
-    border-radius:999px;
-    font-family:Inter,system-ui;
-    cursor:pointer;
-    touch-action: manipulation;
-  }
-  .tab-head button.active{background:var(--accent); color:#fff; border-color:var(--accent)}
-  .tab-page{display:none; padding:12px}
-  .tab-page.active{display:block}
-
   /* ======= Footer ======= */
-  footer{
-    border-top:1px solid var(--line);
-    padding:16px 28px;
-    display:flex;
-    gap:10px;
-    justify-content:space-between;
-    align-items:center;
-    font-family:Inter,system-ui;
-    color:var(--muted)
-  }
+  footer{border-top:1px solid var(--line); padding:16px 28px; display:flex; gap:10px; justify-content:space-between; align-items:center; font-family:Inter,system-ui; color:var(--muted)}
   .footer-brand{display:flex; align-items:center; gap:10px}
   .footer-logo{height:22px; width:auto; display:block}
 
   /* ======= Justificado ======= */
-  .columns p,
-  .columns li,
-  aside p,
-  aside li,
-  .masthead .subtitle,
-  .masthead .meta,
-  blockquote,
-  figcaption,
-  .video-meta,
-  .note{
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
+  .columns p,.columns li,aside p,aside li,.masthead .subtitle,.masthead .meta,blockquote,figcaption,.video-meta,.note{
+    text-align:justify; text-justify:inter-word; hyphens:auto;
   }
 
   /* ======= Visor PDF ======= */
-  .pdf-toolbar{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    align-items:center;
-    margin:8px 0 6px
-  }
-  .pdf-toolbar a, .pdf-toolbar button{
-    appearance:none;
-    border:1px solid var(--line);
-    background:#fff;
-    padding:8px 12px;
-    border-radius:999px;
-    font-family:Inter,system-ui;
-    font-size:14px;
-    cursor:pointer;
-    text-decoration:none;
-    color:inherit;
-    touch-action: manipulation;
+  .pdf-toolbar{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:8px 0 6px}
+  .pdf-toolbar a,.pdf-toolbar button{
+    appearance:none; border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:999px;
+    font-family:Inter,system-ui; font-size:14px; cursor:pointer; text-decoration:none; color:inherit;
   }
   .pdf-toolbar a.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
-  .pdf-wrap{
-    width:100%;
-    height:var(--pdfH);
-    border:1px solid var(--line);
-    border-radius:12px;
-    overflow:hidden;
-    background:#fff;
-    box-shadow:var(--shadow)
-  }
-  .pdf-obj{width:100%; height:100%; border:0; display:block}
 
-  /* ======= SCRIM (overlay fondo) ======= */
-  .scrim{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.35);
-    backdrop-filter: blur(2px);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .2s ease;
-    z-index:45;
+  .pdf-wrap{
+    width:100%; max-width:100%;
+    height:var(--pdfH);
+    border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow)
   }
-  .scrim.open{
-    opacity:1;
-    pointer-events:auto;
+  .pdf-obj{
+    display:block; width:100% !important; max-width:100% !important; height:100%;
+    border:0;
   }
-  @media (min-width:981px){
-    .scrim{display:none !important;}
+  /* Evita que cualquier columna del grid se “estire” por contenido ancho */
+.content > * { min-width: 0; }     /* main y aside */
+.section      { min-width: 0; }     /* por si el PDF está dentro de una sección */
+
+/* El visor de PDF no puede ser más ancho que el texto */
+.pdf-wrap{
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;     /* recorta cualquier desborde interno del visor */
+}
+
+/* El <object> respeta sí o sí el contenedor */
+.pdf-obj{
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100%;
+  border: 0;
+}
+
+/* Extra defensivo para algunos navegadores */
+object[type="application/pdf"]{
+  max-inline-size: 100%;
+}
+
+
+  /* ======= SCRIM (no se usa en dropdown, lo dejamos oculto) ======= */
+  .scrim{display:none}
+
+  /* ======= TOC móvil fijo inferior ======= */
+  .toc-mobile{
+    position:fixed; left:0; right:0; bottom:0;
+    display:flex; gap:6px; justify-content:space-between;
+    padding:10px env(safe-area-inset-right,12px) calc(10px + env(safe-area-inset-bottom,0px)) env(safe-area-inset-left,12px);
+    background:#fff; border-top:1px solid var(--line); box-shadow:0 -6px 18px rgba(0,0,0,.06);
+    z-index:70;
   }
+  .toc-mobile a{flex:1 1 auto; text-align:center; text-decoration:none; color:inherit; font:600 12px/1 Inter,system-ui; border:1px solid var(--line); border-radius:999px; padding:10px 8px;}
+  @media (min-width:981px){ .toc-mobile{display:none} }
 
   /* ======= Print (A4) ======= */
-  @page{ size: A4; margin:12mm }
+  @page{ size:A4; margin:12mm }
   @media print{
-    .toolbar,.scrim{display:none}
+    .toolbar,.toc-mobile{display:none}
     body{background:#fff}
     .sheet{box-shadow:none; border:none;}
-    .content{grid-template-columns: 1fr .85fr; gap:18px}
+    .content{grid-template-columns:1fr .85fr; gap:18px}
     .columns{columns:auto 1; column-gap:0}
     aside{top:0}
     a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px}
   }
 
   /* ======= Responsive ======= */
-  @media (max-width: 980px){
+  @media (max-width:980px){
     .sheet{margin:12px auto 64px;}
-    .sheet header{grid-template-columns: 1fr; padding:18px; gap:16px}
-    .content{grid-template-columns: 1fr; gap:18px; padding:16px}
+    .sheet header{grid-template-columns:1fr; padding:18px; gap:16px}
+    .content{grid-template-columns:1fr; gap:18px; padding:16px}
     aside{position:static; border-left:none; padding-left:0; margin-top:8px}
 
-    .toolbar-inner{grid-template-columns:auto 1fr; gap:8px}
+    .toolbar-inner{
+      grid-template-columns:auto 1fr auto;
+      gap:8px;
+      position:relative; /* ancla del dropdown */
+    }
     .menu-btn{display:inline-flex}
 
-    /* NAV pasa a overlay de pantalla completa (debajo de la toolbar) */
+    /* NAV como dropdown debajo de la barra */
     .nav{
-      display:none; /* oculto por defecto en móvil */
-      position:fixed;
-      top:calc(var(--navH) + env(safe-area-inset-top, 0px));
-      left:0; right:0; bottom:0;
-      z-index:60;
-      flex-direction:column;
-      gap:10px;
-      background:#ffffff;
-      border-top:1px solid var(--line);
-      padding:16px;
-      overflow:auto;
-      -webkit-overflow-scrolling:touch;
-      box-shadow:0 12px 24px rgba(0,0,0,.12);
+      display:none; position:absolute; top:100%; left:0; right:0;
+      margin-top:8px; padding:12px;
+      background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
+      flex-direction:column; gap:12px;
+      max-height:calc(100vh - var(--navH) - 24px);
+      overflow:auto; -webkit-overflow-scrolling:touch; z-index:1000;
     }
     .nav.open{display:flex;}
     .nav a{
-      display:block;
-      width:100%;
-      text-align:center;
-      padding:14px 16px;
-      font-size:16px;
+      display:block; width:100%; text-align:left;
+      padding:14px 12px; border:none; border-radius:8px; font-size:16px;
+    }
+    .nav a.primary{
+      background:var(--accent); color:#fff; border:none;
+      border-radius:999px; text-align:center; padding:12px 16px; font-weight:600;
     }
 
-    .masthead h1, .masthead h2{font-size: clamp(24px, 6vw, 32px)}
-    .masthead .subtitle{font-size: 14px}
-    .ph{aspect-ratio: 16 / 9; min-height: 0; max-height: 48vh}
+    .masthead h1,.masthead h2{font-size:clamp(24px,6vw,32px)}
+    .masthead .subtitle{font-size:14px}
+    .ph{aspect-ratio:16/9; min-height:0; max-height:48vh}
     .table-wrap{border-radius:8px}
     th,td{font-size:13px}
     .kpis{grid-template-columns:1fr 1fr}
-    .pdf-wrap{height:60vh}
+
+    /* PDF responsive (misma caja que el texto) */
+    .pdf-wrap{height:60vh; max-width:100%; border-radius:10px}
+    .pdf-obj{max-width:100%}
   }
 
-  @media (max-width: 560px){
+  @media (max-width:560px){
     .toolbar-inner{padding:8px 12px}
     .brand strong{white-space:normal;}
     footer{flex-direction:column; align-items:flex-start; gap:6px}
@@ -448,8 +282,13 @@
     .ph{max-height:42vh; border-radius:12px}
     .pdf-wrap{height:55vh}
   }
-</style>
 
+  /* Modo exposición (opcional) */
+  .presenter .sheet header{padding:22px}
+  .presenter .content{grid-template-columns:1fr; padding-bottom:76px}
+  .presenter aside{display:none}
+  .presenter .columns p{font-size:1.08rem}
+  </style>
 </head>
 <body>
   <div class="toolbar">
@@ -462,15 +301,13 @@
         <strong>PLAN.T.A.R. Río Gallegos</strong>
       </div>
 
-      <!-- NAV: solo dos botones a portales -->
       <nav id="site-nav" class="nav" aria-label="Accesos a Portales">
-        <a class="primary" href="https://juanifernandez250.github.io/PLANTAR-COMUNIDAD/">Portal Ciudadano</a>
+        <a class="primary"   href="https://juanifernandez250.github.io/PLANTAR-COMUNIDAD/">Portal Ciudadano</a>
         <a class="secondary" href="https://juanifernandez250.github.io/PLANTAR-OPERACION/">Portal Operativo</a>
       </nav>
     </div>
   </div>
 
-  <!-- Scrim para fondo al abrir menú -->
   <div class="scrim" id="scrim" aria-hidden="true"></div>
 
   <article class="sheet">
@@ -481,9 +318,7 @@
         <p class="meta">Proyecto PLAN.T.A.R. · FERNÁNDEZ JUAN IGNACIO · UTN-FRSC · 2025</p>
       </div>
       <div class="ph">
-        <img src="Modelo3D.png"
-             alt="Vista general del modelo 3D de la PTAR Río Gallegos"
-             loading="lazy" decoding="async">
+        <img src="Modelo3D.png" alt="Vista general del modelo 3D de la PTAR Río Gallegos" loading="lazy" fetchpriority="high" decoding="async">
       </div>
     </header>
 
@@ -510,21 +345,15 @@
           </ul>
           <p><em>Quedan excluidos:</em> obra eléctrica y civil detallada, colector principal de la red cloacal urbana, traslado/disposición externa de lodos, y el estudio definitivo de impacto ambiental.</p>
 
-          <!-- Toolbar PDF -->
-          <div class="pdf-toolbar" role="group" aria-label="Controles del documento Planos">
-            <a class="primary" href="planos.pdf" target="_blank" rel="noopener">Abrir planos en pestaña nueva</a>
-            <a href="planos.pdf" download>Descargar PDF</a>
-            <button type="button" id="btnReloadPdf">Recargar visor</button>
+          <div class="pdf-toolbar" role="group" aria-label="Descargas rápidas">
+            <a href="planos.pdf" target="_blank" rel="noopener" class="primary">Abrir Planos (PDF)</a>
           </div>
 
-          <!-- Visor PDF -->
           <div class="pdf-wrap" aria-label="Visor de Planos">
-            <object id="pdfPlanos" class="pdf-obj"
-                    data="planos.pdf#view=FitH"
-                    type="application/pdf">
+            <object id="pdfPlanos" class="pdf-obj" data="planos.pdf#view=FitH" type="application/pdf">
               <div style="padding:12px; font-family:Inter, system-ui; font-size:14px;">
                 Tu navegador no pudo embeber el PDF.
-                <a href="planos.pdf" target="_blank" rel="noopener">Abrir “planos.pdf”</a> o descargalo para verlo localmente.
+                <a href="planos.pdf" target="_blank" rel="noopener">Abrí “planos.pdf”</a> o descargalo para verlo localmente.
               </div>
             </object>
           </div>
@@ -713,7 +542,14 @@
           </div>
 
           <h3>Control de laboratorio</h3>
-          <p>Parámetros de rutina: DBO₅, SST, sólidos sedimentables, OD, cloro residual y coliformes. <strong>Registros normalizados</strong> integrados con operación (caudales, purgas) para trazabilidad y auditorías.</p>
+          <p>Parámetros de rutina:
+            <button class="tip" data-tip="Demanda Bioquímica de Oxígeno a 5 días.">DBO₅</button>,
+            <button class="tip" data-tip="Sólidos Suspendidos Totales.">SST</button>,
+            <button class="tip" data-tip="Oxígeno Disuelto.">OD</button>,
+            <button class="tip" data-tip="Costo Anual Equivalente (flujo anual uniforme equivalente).">CAE</button> y
+            <button class="tip" data-tip="Costo del ciclo de vida descontado a valor presente.">LCC</button>.
+            <strong>Registros normalizados</strong> integrados con operación (caudales, purgas) para trazabilidad y auditorías.
+          </p>
 
           <h3>Mantenimiento preventivo</h3>
           <p>Rutinas programadas diarias, semanales, mensuales y anuales: inspección, ajuste, lubricación y verificación; foco en rotores, rasquetas y estructuras.</p>
@@ -737,6 +573,16 @@
 
           <h3>Costos de operación (OPEX)</h3>
           <p>OPEX total anual: <strong>3&nbsp;026&nbsp;108 USD</strong>.</p>
+
+          <figure aria-label="Participación OPEX por rubro" style="margin:8px 0">
+            <svg viewBox="0 0 100 20" width="100%" height="40" role="img" aria-labelledby="t">
+              <title id="t">OPEX: Energía 49.11%, Insumos 32.37%, Otros 18.52%</title>
+              <rect x="0" y="6" width="49.11" height="8" fill="currentColor" opacity=".9"></rect>
+              <rect x="49.11" y="6" width="32.37" height="8" fill="currentColor" opacity=".5"></rect>
+              <rect x="81.48" y="6" width="18.52" height="8" fill="currentColor" opacity=".2"></rect>
+            </svg>
+            <figcaption class="note">Energía 49,11% · Insumos 32,37% · Otros 18,52% del OPEX.</figcaption>
+          </figure>
 
           <h3>Evaluación económica clave</h3>
           <div class="table-wrap">
@@ -790,7 +636,7 @@
           </ol>
         </section>
 
-        <!-- MULTIMEDIA (opcional) -->
+        <!-- MULTIMEDIA -->
         <section class="section" id="multimedia">
           <div class="kicker">Multimedia</div>
           <h2>Videos explicativos</h2>
@@ -865,15 +711,27 @@
     </footer>
   </article>
 
+  <nav class="toc-mobile" aria-label="Navegación rápida">
+    <a href="#proposito">Propósito</a>
+    <a href="#linea-liquida">Proceso</a>
+    <a href="#lodos">Lodos</a>
+    <a href="#economia">Economía</a>
+    <a href="#alcance">Planos</a>
+  </nav>
+
   <script>
-    // Navegación suave SOLO para anclas internas (si las hubiera en el menú)
-    document.querySelectorAll('.nav a[href^="#"]').forEach(a=>{
+    // Navegación suave para anclas internas (menú y TOC)
+    function smoothTo(id){
+      const el=document.querySelector(id);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    document.querySelectorAll('.nav a[href^="#"], .toc-mobile a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href');
         if(id && id.startsWith('#')){
           e.preventDefault();
-          const target=document.querySelector(id);
-          if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+          smoothTo(id);
           closeMenu();
         }
       })
@@ -881,53 +739,50 @@
 
     const menuBtn = document.querySelector('.menu-btn');
     const nav = document.getElementById('site-nav');
-    const scrim = document.getElementById('scrim');
 
     function openMenu(){
       nav.classList.add('open');
-      document.body.classList.add('menu-open');
       menuBtn.setAttribute('aria-expanded','true');
-      scrim?.classList.add('open');
     }
     function closeMenu(){
       nav.classList.remove('open');
-      document.body.classList.remove('menu-open');
       menuBtn.setAttribute('aria-expanded','false');
-      scrim?.classList.remove('open');
     }
 
-    // Menú responsive (toggle)
+    // Toggle menú (dropdown)
     menuBtn.addEventListener('click',()=>{
       const isOpen = nav.classList.toggle('open');
-      document.body.classList.toggle('menu-open', isOpen);
       menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      scrim?.classList.toggle('open', isOpen);
     });
 
-    // Cerrar con scrim o tecla ESC
-    scrim?.addEventListener('click', closeMenu);
+    // Cerrar con ESC
     document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape') closeMenu();
+      if(e.key === 'Escape') { closeMenu(); closeTips(); }
     });
 
     // Reset al pasar a desktop
     window.addEventListener('resize',()=>{
-      if(window.matchMedia('(min-width: 981px)').matches){
-        closeMenu();
-      }
+      if(window.matchMedia('(min-width: 981px)').matches){ closeMenu(); }
     });
 
-    // PDF: recargar visor (por si se corta en móviles)
-    const btnReload=document.getElementById('btnReloadPdf');
-    const pdfObj=document.getElementById('pdfPlanos');
-    btnReload?.addEventListener('click', ()=>{
-      if(!pdfObj) return;
-      const url=new URL(pdfObj.getAttribute('data') || pdfObj.data, window.location.href);
-      url.searchParams.set('_', Date.now().toString()); // cache-buster
-      pdfObj.setAttribute('data', url.pathname + url.search + url.hash);
+    // Tooltips accesibles
+    function closeTips(){
+      document.querySelectorAll('.tip[aria-expanded="true"]').forEach(x=>x.setAttribute('aria-expanded','false'));
+    }
+    document.querySelectorAll('.tip').forEach(b=>{
+      b.setAttribute('aria-expanded','false');
+      b.setAttribute('aria-haspopup','dialog');
+      b.addEventListener('click',()=>{
+        const open=b.getAttribute('aria-expanded')==='true';
+        closeTips();
+        b.setAttribute('aria-expanded', open?'false':'true');
+      });
+    });
+    document.addEventListener('click',e=>{
+      if(!(e.target instanceof Element && e.target.classList.contains('tip'))){ closeTips(); }
     });
 
-    // Tests mínimos
+    // Sanity checks
     console.assert(document.querySelector('.brand strong')?.textContent.includes('PLAN.T.A.R.'), 'Brand debe decir PLAN.T.A.R.');
     console.assert(!!document.querySelector('#site-nav'), 'La navegación principal debe existir');
   </script>
