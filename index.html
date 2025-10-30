@@ -216,7 +216,7 @@
       <div class="masthead">
         <h1>Folleto técnico de la PLAN.T.A.R. Río Gallegos</h1>
         <p class="subtitle">Agua limpia, futuro seguro.</p>
-        <p class="meta">Proyecto PLAN.T.A.R. · FERNANDEZ JUAN IGNACIO · UTN-FRSC · 2025</p>
+        <p class="meta">Proyecto PLAN.T.A.R. · FERNÁNDEZ JUAN IGNACIO · UTN-FRSC · 2025</p>
       </div>
       <div class="ph">
         <img src="Modelo3D.png"
@@ -228,157 +228,321 @@
     <section class="content">
       <main class="columns">
 
+        <!-- PROPÓSITO -->
         <section class="section" id="proposito">
           <div class="kicker">Propósito</div>
-          <h2>¿Qué es y para qué sirve?</h2>
-          <p class="dropcap">La planta <strong>protege la salud pública y el ambiente</strong> al depurar los efluentes cloacales de la ciudad. El <strong>diseño se realiza</strong> con criterios normativos nacionales y <strong>la obra se construirá</strong> en módulos escalables que acompañarán el crecimiento urbano, minimizando riesgos y costos.</p>
-          <blockquote>Una infraestructura esencial, normalmente invisible, que garantiza salud, ambiente y desarrollo local.</blockquote>
+          <h2>Introducción y objetivo general</h2>
+          <p class="dropcap">El objetivo principal del proyecto es la realización de una <strong>Planta de Tratamiento de Líquidos Cloacales</strong> para la ciudad de Río Gallegos, provincia de Santa Cruz, diseñada para alcanzar la capacidad de <strong>200&nbsp;000 habitantes</strong> en un horizonte de diseño de más de <strong>20 años</strong>. Esta infraestructura busca brindar cobertura integral y asegurar la depuración de los líquidos, evitando la contaminación de cuerpos receptores y cumpliendo con las exigencias normativas.</p>
+          <blockquote>Una infraestructura esencial para salud pública y ambiente, con diseño robusto para clima frío y operación por gravedad.</blockquote>
+          <p>Este proyecto establece los criterios generales de diseño, normativas de referencia, definiciones sanitarias y bibliografía técnica que rigen el desarrollo de todas las memorias descriptivas y de cálculo.</p>
         </section>
 
+        <!-- ALCANCE + PDF -->
         <section class="section" id="alcance">
           <div class="kicker">Alcance</div>
-          <h2>Capacidad y esquema</h2>
+          <h2>Proyecto electromecánico</h2>
+          <p>El proyecto se enfoca en el <strong>cálculo y dimensionamiento electromecánico</strong> del sistema. El alcance incluye el circuito de tratamiento desde la cámara de rejas hasta la descarga del efluente tratado en la ría, y el tratamiento de lodos desde su extracción hasta su preparación para disposición final.</p>
           <ul>
-            <li><strong>Población de diseño:</strong> 200 000 habitantes (horizonte 20 años).</li>
-            <li><strong>Cobertura:</strong> área urbana y periurbana.</li>
-            <li><strong>Hidráulica:</strong> tránsito por gravedad desde pretratamiento a desinfección; bombeos sólo auxiliares.</li>
-            <li><strong>Flexibilidad:</strong> configuración modular y paralela por unidades.</li>
+            <li><strong>Línea Líquida:</strong> Pretratamiento (rejas finas y desarenadores), reactor biológico, sedimentación secundaria y desinfección.</li>
+            <li><strong>Línea de Lodos:</strong> Espesamiento por gravedad y secado en lechos convencionales.</li>
           </ul>
+          <p><em>Quedan excluidos:</em> obra eléctrica y civil detallada, colector principal de la red cloacal urbana, traslado/disposición externa de lodos, y el estudio definitivo de impacto ambiental.</p>
 
-          <!-- Toolbar simple para el PDF -->
+          <!-- Toolbar PDF -->
           <div class="pdf-toolbar" role="group" aria-label="Controles del documento Planos">
-            <a class="primary" href="planos.pdf" target="_blank" rel="noopener">Abrir en pestaña nueva</a>
+            <a class="primary" href="planos.pdf" target="_blank" rel="noopener">Abrir planos en pestaña nueva</a>
             <a href="planos.pdf" download>Descargar PDF</a>
             <button type="button" id="btnReloadPdf">Recargar visor</button>
           </div>
 
-          <!-- Visor PDF con fallback -->
+          <!-- Visor PDF -->
           <div class="pdf-wrap" aria-label="Visor de Planos">
             <object id="pdfPlanos" class="pdf-obj"
                     data="planos.pdf#view=FitH"
                     type="application/pdf">
               <div style="padding:12px; font-family:Inter; font-size:14px;">
                 Tu navegador no pudo embeber el PDF.
-                <a href="planos.pdf" target="_blank" rel="noopener">Abrir “planos.pdf” en una pestaña nueva</a> o descargalo para verlo localmente.
+                <a href="planos.pdf" target="_blank" rel="noopener">Abrir “planos.pdf”</a> o descargalo para verlo localmente.
               </div>
             </object>
           </div>
         </section>
 
-        <section class="section" id="proceso">
-          <div class="kicker">Proceso</div>
-          <h2>Línea líquida</h2>
-          <ol>
-            <li><strong>Pretratamiento:</strong> cámara de llegada; rejas finas de 12 mm (manuales + cestos); medición de caudal <span class="note"></span>.</li>
-            <li><strong>Desarenado–desengrasado (×2):</strong> extracción mecánica con puente barredor <span class="note"></span>.</li>
-            <li><strong>Zanjas de oxidación (×6):</strong> aireación por rotores; control de oxígeno disuelto; recirculación interna; criterios para clima frío. <span class="note">F/M ≈ 0,05 kg DBO5/kg SSTA; X ≈ 4 kg SSTA/m³.</span></li>
-            <li><strong>Sedimentación secundaria (×3):</strong> clarificadores circulares con rasquetas; retorno de lodos <span class="note"></span>.</li>
-            <li><strong>Desinfección:</strong> cámara de contacto con cloro (serpentina) con demanda y t* asegurados <span class="note"></span>.</li>
-          </ol>
-
-          <!-- <div class="tabs" aria-label="Vista por líneas">
-            <div class="tab-head">
-              <button class="active" data-tab="t-liquida">Diagrama – Línea líquida</button>
-              <button data-tab="t-hidraulica">Hidráulica y control</button>
-              <button data-tab="t-seguridad">Seguridad de proceso</button>
-            </div>
-            <div id="t-liquida" class="tab-page active">
-              <!-- Espacio para diagrama -->
-            </div>
-            <div id="t-hidraulica" class="tab-page">
-              <div class="table-wrap">
-                <div class="table-hint">Deslizar ↔</div>
-                <table>
-                  <thead><tr><th>Unidad</th><th>Condición</th><th>Nota</th></tr></thead>
-                  <tbody>
-                    <tr><td>Canales</td><td>Gravedad, régimen subcrítico</td><td>Velocidad no erosiva</td></tr>
-                    <tr><td>Bypasses</td><td>Por unidad</td><td>Mantenimiento sin paro</td></tr>
-                    <tr><td>Medición</td><td>Canal Parshall / vertedero</td><td>Registro y telemetría</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div id="t-seguridad" class="tab-page">
-              <ul>
-                <li>Barandas, pasarelas, líneas de vida y puntos de rescate.</li>
-                <li>Duchas y lavaojos en proximidad a cloración.</li>
-                <li>Señalética y exclusión de zonas de atrapamiento en rotores.</li>
-              </ul>
-            </div>
-          </div>
+        <!-- FILOSOFÍA -->
+        <section class="section" id="filosofia">
+          <div class="kicker">Filosofía</div>
+          <h2>Robustez, simplicidad y gravedad</h2>
+          <p>El diseño privilegia la <strong>operación por gravedad</strong> desde el ingreso hasta la descarga final, evitando estaciones de bombeo dentro del proceso y sistemas mecanizados o automatizados complejos (recirculación de fangos, digestión de lodos), maximizando <strong>simplicidad operativa</strong>, <strong>confiabilidad</strong> y <strong>adecuación a clima frío</strong>.</p>
         </section>
 
-        <section class="section" id="lodos">
-          <div class="kicker">Sólidos</div>
-          <h2>Tratamiento de lodos</h2>
+        <!-- CONTEXTO -->
+        <section class="section" id="contexto">
+          <div class="kicker">Contexto</div>
+          <h2>Ubicación y justificación del emplazamiento</h2>
+          <p>La planta se emplazará en el predio del actual vaciadero municipal de Río Gallegos, ubicado aproximadamente a <strong>200&nbsp;m</strong> al oeste de la planta de tamices existente. El predio total tiene una superficie de <strong>13&nbsp;ha</strong>.</p>
           <ul>
-            <li><strong>Origen:</strong> lodos secundarios de clarificadores.</li>
-            <li><strong>Espesamiento por gravedad:</strong> unidad circular <span class="note">(ENOHSA, 11.16)</span>.</li>
-            <li><strong>Lechos de secado:</strong> batería drenada en paralelo (capa ≈ 0,25 m).</li>
-            <li><strong>Gestión final:</strong> disposición en sitio autorizado y/o aprovechamiento como enmienda conforme requisitos sanitarios.</li>
+            <li><strong>Aprovechamiento territorial:</strong> sitio ya impactado y degradado; se evita ocupar áreas vírgenes o sensibles.</li>
+            <li><strong>Topografía:</strong> pendiente favorable para escurrimiento por gravedad, reduciendo bombeo.</li>
+            <li><strong>Disposición de lodos:</strong> la localización sobre el vaciadero habilita sectores para disposición final controlada de barros tratados.</li>
           </ul>
         </section>
 
-        <section class="section" id="energia">
-          <div class="kicker">Gestión y O&amp;M</div>
-          <h2>Energía y operación</h2>
-          <ul>
-            <li><strong>Energía:</strong> la aireación constituye el principal consumo; se prevén variadores, control por DO y operación por etapas.</li>
-            <li><strong>O&amp;M:</strong> rutinas estandarizadas, repuestos críticos, plan de calibración y manuales de seguridad.</li>
-            <li><strong>Operación:</strong> organismo prestador local; se admite concesión/cooperativa.</li>
-          </ul>
-
-          <div class="tabs" aria-label="Estrategias de eficiencia">
-            <div class="tab-head">
-              <button class="active" data-tab="t-aireacion">Aireación</button>
-              <!--<button data-tab="t-automatizacion">Automatización</button>-->
-              <!--<button data-tab="t-invierno">Plan de invierno</button>-->
-            </div>
-            <div id="t-aireacion" class="tab-page active">
-              <ul>
-                <li>Rotores con VFD.</li>
-                <li>Estrategias de ciclo.</li>
-                <li>Mantenimiento preventivo de sellos y rodamientos.</li>
-              </ul>
-            </div>
-             <!--<div id="t-automatizacion" class="tab-page">
-              <ul>
-                <li>Telemetría de caudal, DO, pH, temperatura.</li>
-                <li>Alarmas por estación.</li>
-                <li>Históricos y reporte mensual de KPIs.</li>
-              </ul>
-            </div>-->
-             <!--<div id="t-invierno" class="tab-page">
-              <ul>
-                <li>Plan de contingencias por congelamiento superficial.</li>
-              </ul>
-            </div>-->
-          </div>
-        </section>
-
-        <section class="section" id="impacto">
-          <div class="kicker">Metas</div>
-          <h2>Desempeño esperado</h2>
-          <ul>
-            <li>Remociones globales de DBO5 y SST &gt; 85 % (zanjas + clarificación).</li>
-            <li>Desinfección: cumplimiento bacteriológico vía demanda + tiempo de contacto.</li>
-            <li>Control de olores: pretratamiento confinado y gestión de grasas.</li>
-          </ul>
-        </section>
-
+        <!-- NORMATIVA -->
         <section class="section" id="normativa">
           <div class="kicker">Normativa</div>
-          <h2>Notas técnicas (APA en cuerpo)</h2>
+          <h2>Marco de referencia</h2>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Eje</th><th>Referencia</th><th>Aplicación</th></tr></thead>
+              <tbody>
+                <tr><td>Norma principal (técnica)</td><td>ex ENOHSA – Tomos I y II</td><td>Criterios de estudio y diseño por unidad</td></tr>
+                <tr><td>Normas específicas</td><td>IRAM · ISO · Metcalf &amp; Eddy</td><td>Materiales, calidad de agua, seguridad eléctrica, buenas prácticas</td></tr>
+                <tr><td>Ambientales y sanitarias (Santa Cruz)</td><td>Ley Prov. 2658 · Dec. 007/06</td><td>Uso del recurso hídrico y exigencias de vertido</td></tr>
+                <tr><td>Residuos</td><td>Ley Nac. 24.051</td><td>Gestión de residuos peligrosos (si aplica a lodos)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- DIMENSIONAMIENTO -->
+        <section class="section" id="dimensionamiento">
+          <div class="kicker">Dimensionamiento</div>
+          <h2>Parámetros de diseño</h2>
+          <p><strong>Proyección poblacional:</strong> población de diseño <strong>200&nbsp;000 hab</strong> al año horizonte <strong>2042</strong> (20 años). Proyecciones geométrica/lineal estiman <strong>172&nbsp;591–184&nbsp;684 hab</strong>. Se adopta 200&nbsp;000 como margen de seguridad, extendiendo vida útil efectiva a <strong>25–30 años</strong>.</p>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Parámetro</th><th>Valor</th><th>Nota</th></tr></thead>
+              <tbody>
+                <tr><td>TCAM</td><td>1,81&nbsp;% anual</td><td>Base INDEC</td></tr>
+                <tr><td>Dotación Agua Potable</td><td>250 L/hab·día</td><td>Guía ex ENHOSA</td></tr>
+                <tr><td>Coeficiente de retorno</td><td>0,80</td><td>—</td></tr>
+                <tr><td>Aporte cloacal efectivo</td><td>200 L/hab·día</td><td>Clima frío</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Caudales de diseño:</strong> calculados para Año 0, 10 y 20; los máximos del Año 20 determinan el dimensionamiento hidráulico. <strong>Carga orgánica:</strong> afluente predominantemente domiciliario.</p>
+        </section>
+
+        <!-- PROCESO – LÍNEA LÍQUIDA -->
+        <section class="section" id="linea-liquida">
+          <div class="kicker">Proceso</div>
+          <h2>Línea líquida</h2>
+
+          <h3>Pretratamiento</h3>
+          <p>El efluente llega impulsado por estaciones previas; en planta <strong>no se requieren rejas gruesas</strong> ni estación de bombeo cruda.</p>
+
+          <h3>Rejas finas</h3>
+          <p><strong>Tres (3)</strong> unidades en paralelo (<em>una by-pass</em>), limpieza manual, separación <strong>12&nbsp;mm</strong>.</p>
+
+          <h3>Desarenador – desengrasador</h3>
+          <p><strong>Dos (2)</strong> unidades combinadas en paralelo, remueven arenas <strong>0,20&nbsp;mm</strong>. Manejo manual o bombas de arena; sin concentración avanzada ni digestión de grasas.</p>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Variable</th><th>Valor adoptado</th></tr></thead>
+              <tbody>
+                <tr><td>Canal</td><td>Rectangular 2,32&nbsp;m × 16,22&nbsp;m</td></tr>
+                <tr><td>Tirante</td><td>1,10&nbsp;m</td></tr>
+                <tr><td>Velocidad</td><td>0,31&nbsp;m/s</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Tratamiento biológico – zanja de oxidación</h3>
+          <p>Sistema de <strong>aireación prolongada</strong> con <strong>seis (6)</strong> módulos independientes en paralelo.</p>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Dimensiones por canal</td><td>290,48&nbsp;m × 7,00&nbsp;m × 4,00&nbsp;m</td></tr>
+                <tr><td>Tiempo de retención</td><td>24&nbsp;h</td></tr>
+                <tr><td>Aireación</td><td>Nueve (9) rotores horizontales</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Sedimentación secundaria</h3>
+          <p><strong>Tres (3)</strong> unidades circulares tipo Dortmund en paralelo; separación de sólidos biológicos con retorno de lodos.</p>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Ítem</th><th>Especificación</th></tr></thead>
+              <tbody>
+                <tr><td>Diámetro por unidad</td><td>36&nbsp;m</td></tr>
+                <tr><td>Extracción</td><td>Por gravedad desde tolva central</td></tr>
+                <tr><td>Barredor</td><td>De fondo, tipo espiral</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Desinfección final</h3>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Variable</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Unidad</td><td>Cámara de contacto</td></tr>
+                <tr><td>Recorrido hidráulico</td><td>540&nbsp;m</td></tr>
+                <tr><td>Geometría</td><td>45&nbsp;m × 8&nbsp;m</td></tr>
+                <tr><td>Agente</td><td>Hipoclorito de sodio 10&nbsp;%</td></tr>
+                <tr><td>Dosis</td><td>5&nbsp;mg/L (cloro activo)</td></tr>
+                <tr><td>Volumen diario</td><td>2&nbsp;440&nbsp;L/día</td></tr>
+                <tr><td>Reserva</td><td>8 tanques × 10&nbsp;m³ (≈30 días)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- LÍNEA DE LODOS -->
+        <section class="section" id="lodos">
+          <div class="kicker">Sólidos</div>
+          <h2>Diseño del tratamiento de lodos</h2>
+          <p>Se evita la digestión anaeróbica por complejidad y costos en clima frío. Los lodos estabilizados serán aptos para <strong>relleno sanitario</strong> o <strong>compostaje</strong>.</p>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Etapa</th><th>Configuración</th><th>Parámetros</th></tr></thead>
+              <tbody>
+                <tr><td>Generación</td><td>Lodo secundario</td><td>273,28&nbsp;m³/día; producción específica 70&nbsp;kg/hab·día</td></tr>
+                <tr><td>Espesamiento</td><td>1 espesador por gravedad</td><td>Diámetro 7&nbsp;m</td></tr>
+                <tr><td>Secado</td><td>9 lechos en paralelo</td><td>10&nbsp;m × 40&nbsp;m (c/u); total 3&nbsp;600&nbsp;m²; capa 0,25&nbsp;m</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- GESTIÓN Y ORGANIZACIÓN -->
+        <section class="section" id="gestion">
+          <div class="kicker">Gestión</div>
+          <h2>Operación y organización</h2>
+          <h3>Ente operador y marco institucional</h3>
+          <p>La operación y el mantenimiento podrán estar a cargo de <strong>SPSE</strong>. Alternativamente, una <strong>cooperativa de servicios</strong> es una opción sólida por alineación de intereses con usuarios, transparencia y reinversión local de excedentes en mantenimiento, reposiciones y ampliaciones.</p>
+          <p>La cooperativa puede estructurar <strong>manuales de organización, procesos y calidad</strong>, con indicadores de nivel de servicio, estandarización del trabajo, formación y mejora continua; fortalece cultura de seguridad e higiene y soporta mantenimiento planificado y atención al usuario.</p>
+
+          <h3>Estructura organizacional y áreas</h3>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Área</th><th>Función principal</th></tr></thead>
+              <tbody>
+                <tr><td>Planta de Tratamiento</td><td>Operación de rejas, zanjas, sedimentadores y lodos</td></tr>
+                <tr><td>Mantenimiento Electromecánico</td><td>Conservación y mantenimiento preventivo de equipos</td></tr>
+                <tr><td>Calidad y Laboratorio</td><td>Control analítico (DBO₅, SST, coliformes) y sistema de calidad</td></tr>
+                <tr><td>Administración</td><td>Gestión documental, inventarios y soporte</td></tr>
+                <tr><td>Oficina Técnica</td><td>Documentación, inspección técnica y control de obras</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Personal:</strong> 19 personas totales para operación, mantenimiento, calidad y gestión. Cobertura 24/7 con turnos rotativos.</p>
+        </section>
+
+        <!-- CALIDAD Y PROCESOS -->
+        <section class="section" id="calidad">
+          <div class="kicker">Calidad</div>
+          <h2>Sistema de gestión y procesos</h2>
+          <p>Se adopta un Sistema de Gestión Integrado apoyado en <strong>ISO 9001</strong> e <strong>ISO 14001</strong>, con política de continuidad, eficiencia, sostenibilidad, cumplimiento normativo, mejora continua, prevención ambiental y capacitación.</p>
+
+          <h3>Manual de procesos operativos</h3>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Unidad de proceso</th><th>Tarea de control clave</th><th>Frecuencia</th></tr></thead>
+              <tbody>
+                <tr><td>Rejas finas</td><td>Lectura de pérdida de carga</td><td>Cada 2 horas</td></tr>
+                <tr><td>Zanja de oxidación</td><td>OD y velocidad de rotores</td><td>≥ 3 veces/día</td></tr>
+                <tr><td>Sedimentadores</td><td>Espesor de manta de lodos</td><td>Diaria</td></tr>
+                <tr><td>Desinfección</td><td>Cloro residual y dosis aplicada</td><td>Cada turno y diaria</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Control de laboratorio</h3>
+          <p>Parámetros de rutina: DBO₅, SST, sólidos sedimentables, OD, cloro residual y coliformes. <strong>Registros normalizados</strong> integrados con operación (caudales, purgas) para trazabilidad y auditorías.</p>
+
+          <h3>Mantenimiento preventivo</h3>
+          <p>Rutinas programadas diarias, semanales, mensuales y anuales: inspección, ajuste, lubricación y verificación; foco en rotores, rasquetas y estructuras.</p>
+        </section>
+
+        <!-- ECONOMÍA -->
+        <section class="section" id="economia">
+          <div class="kicker">Economía</div>
+          <h2>Análisis económico y financiero</h2>
+          <h3>Marco financiero y horizonte</h3>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Variable</th><th>Valor</th><th>Base</th></tr></thead>
+              <tbody>
+                <tr><td>Moneda / precios</td><td>USD</td><td>09/2025 (real)</td></tr>
+                <tr><td>Horizonte</td><td>20 años</td><td>—</td></tr>
+                <tr><td>Tasa de descuento (real)</td><td>8,0 % anual</td><td>Proy. saneamiento</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Costos de operación (OPEX)</h3>
+          <p>OPEX total anual: <strong>3&nbsp;026&nbsp;108 USD</strong>.</p>
+
+          <h3>Evaluación económica clave</h3>
+          <div class="table-wrap">
+            <div class="table-hint">Deslizar ↔</div>
+            <table>
+              <thead><tr><th>Indicador</th><th>Valor</th><th>Descripción</th></tr></thead>
+              <tbody>
+                <tr><td>LCC</td><td>31&nbsp;276&nbsp;301,84 USD</td><td>Ciclo de vida (presente), 20 años</td></tr>
+                <tr><td>CAE</td><td>4&nbsp;300&nbsp;050,99 USD/año</td><td>Pago anual uniforme (real)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Sensibilidad e impacto tarifario</h3>
+          <p>Energía aporta <strong>49,11&nbsp;%</strong> e Insumos <strong>32,37&nbsp;%</strong> del OPEX; en conjunto <strong>81,49&nbsp;%</strong>. Un ±20&nbsp;% en energía implica <strong>±297&nbsp;241,52 USD/año</strong> en el CAE. Los costos por usuario disminuyen hacia Año 20 al amortizarse costos fijos sobre una base mayor.</p>
+
+          <h3>Equilibrio financiero</h3>
+          <p>En Año 0, el costo unitario por usuario <strong>10,21 USD/mes</strong> (escenario Base) presenta déficit vs. tarifa vigente. Se prevén <strong>subsidios transitorios</strong> o ajustes durante los primeros años. El sistema alcanza <strong>equilibrio y sustentabilidad</strong> a partir de <strong>Año 10</strong>.</p>
+        </section>
+
+        <!-- SOSTENIBILIDAD / COMUNICACIÓN -->
+        <section class="section" id="sostenibilidad">
+          <div class="kicker">Sostenibilidad</div>
+          <h2>Ambiente y comunicación</h2>
+          <h3>Consideraciones ambientales</h3>
+          <p>Localización en predio de vaciadero para reconvertir un área degradada. Se realizará la <strong>EsIA</strong> completa conforme Ley Provincial 2658.</p>
+
+          <h3>Matriz ambiental primigenia</h3>
+          <ul>
+            <li><strong>Agua superficial:</strong> posible alteración físico-química por vuelco del efluente tratado (Directo, Moderado, Permanente).</li>
+            <li><strong>Percepción social:</strong> olores en zonas de secado (Indirecto, Moderado, Temporal).</li>
+            <li><strong>Residuos sólidos:</strong> disposición segura de arenas, grasas y barros (Directo, Moderado, Permanente).</li>
+          </ul>
+
+          <h3>Plan de marketing y comunicación</h3>
+          <p>Posicionamiento como “<strong>polo de saneamiento y recuperación ambiental</strong>”.</p>
+          <ul>
+            <li><strong>Portal Público:</strong> indicadores (DBO₅, coliformes), avances, reclamos con trazabilidad.</li>
+            <li><strong>Portal Interno:</strong> reportes diarios, mantenimiento preventivo, control de insumos.</li>
+            <li><strong>Comunidad:</strong> visitas guiadas, sensibilización; <strong>crisis:</strong> protocolos y voceros.</li>
+          </ul>
+        </section>
+
+        <!-- REFERENCIAS -->
+        <section class="section" id="referencias">
+          <div class="kicker">Referencias</div>
+          <h2>Bibliografía técnica</h2>
           <ol>
-            <li>ENOHSA. (s. f.). <em>Normas de estudio, criterios de diseño y presentación de proyectos de desagües cloacales</em>. Tomo II: rejas (11.2.7), desarenado (11.3.6), clarificación (11.4.3), zanjas de oxidación (11.9.3), desinfección (11.17), lodos (11.16).</li>
-            <li>Metcalf &amp; Eddy, Inc. (2014). <em>Metcalf & Eddy, Inc. (1995). Ingeniería de aguas residuales: Tratamiento, vertido y reutilización (3ra ed.). McGraw-Hill.</li>
-            <li>UTN-FRSC. (2025). <em>Memorias técnicas internas del Proyecto PLAN.T.A.R.</em>.</li>
+            <li>ENOHSA. <em>Normas de estudio, criterios de diseño y presentación de proyectos de desagües cloacales</em>. Tomos I y II.</li>
+            <li>Metcalf &amp; Eddy (2014). <em>Wastewater Engineering: Treatment and Resource Recovery</em>. McGraw-Hill.</li>
+            <li>Ley Prov. 2658 (Santa Cruz) y Decreto 007/06 · Ley Nac. 24.051.</li>
           </ol>
         </section>
 
+        <!-- MULTIMEDIA (opcional) -->
         <section class="section" id="multimedia">
           <div class="kicker">Multimedia</div>
-          <h2>Videos explicativos (Generados con Notebook LM)</h2>
+          <h2>Videos explicativos</h2>
           <div class="media-grid">
             <div class="video-card">
               <div class="video-wrap">
@@ -391,7 +555,7 @@
                   allowfullscreen
                   loading="lazy"></iframe>
               </div>
-              <div class="video-meta">Video resumen del proyecto PLAN.T.A.R. Río Gallegos: objetivo, proceso y beneficios de la nueva planta de tratamiento cloacal, con foco en operación y gestión.</div>
+              <div class="video-meta">Introducción, proceso y beneficios con foco en operación y gestión.</div>
             </div>
 
             <div class="video-card">
@@ -405,21 +569,7 @@
                   allowfullscreen
                   loading="lazy"></iframe>
               </div>
-              <div class="video-meta">Video resumen del proyecto PLAN.T.A.R. Río Gallegos con foco en el análisis económico.</div>
-            </div>
-
-            <div class="video-card">
-              <div class="video-wrap">
-                <iframe
-                  src="https://player.vimeo.com/video/1129344542?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                  title="Render_Clarificador"
-                  frameborder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                  loading="lazy"></iframe>
-              </div>
-              <div class="video-meta">Video resumen del proyecto PLAN.T.A.R. Río Gallegos con foco en el análisis tecnico</div>
+              <div class="video-meta">Resumen económico: OPEX, LCC, CAE y sensibilidad.</div>
             </div>
           </div>
         </section>
@@ -430,26 +580,26 @@
         <div class="card">
           <h3>Ficha técnica rápida</h3>
           <div class="stats">
-            <div class="stat"><b>Población</b><span>200 000 hab</span></div>
-            <div class="stat"><b>Horizonte</b><span>20 años</span></div>
-            <div class="stat"><b>Caudal</b><span>0,801 m³/s</span></div>
-            <div class="stat"><b>Energía</b><span>6 664 608 kWh/año</span></div>
-            <div class="stat"><b>Rejas</b><span>12 mm</span></div>
-            <div class="stat"><b>Lechos</b><span>Capa 0,25 m</span></div>
+            <div class="stat"><b>Población</b><span>200&nbsp;000 hab</span></div>
+            <div class="stat"><b>Horizonte</b><span>20 años (2042)</span></div>
+            <div class="stat"><b>TCAM</b><span>1,81&nbsp;%</span></div>
+            <div class="stat"><b>Dotación</b><span>250 L/hab·día</span></div>
+            <div class="stat"><b>Aporte</b><span>200 L/hab·día</span></div>
+            <div class="stat"><b>Personal</b><span>19 personas</span></div>
           </div>
         </div>
 
         <div class="card">
           <h3>Normativa aplicada</h3>
-          <p>ENOHSA Tomo I y II: rejas (11.2.7), desarenado (11.3.6), clarificación (11.4.3), zanjas de oxidación (11.9.3), desinfección (11.17), lodos (11.16).</p>
+          <p>ENOHSA Tomos I–II · IRAM · ISO · Metcalf &amp; Eddy (2014) · Ley Prov. 2658 y Dec. 007/06 · Ley Nac. 24.051.</p>
         </div>
 
         <div class="card">
           <h3>Seguridad y ambiente</h3>
           <ul>
-            <li>Barandas y pasarelas en altura.</li>
-            <li>Señalética, duchas, kits de derrames.</li>
-            <li>Gestión de cribados, arenas y grasas.</li>
+            <li>Barandas, pasarelas y líneas de vida.</li>
+            <li>Duchas, lavaojos, kits de derrames.</li>
+            <li>Gestión segura de cribados, arenas y grasas.</li>
           </ul>
         </div>
       </aside>
@@ -465,7 +615,7 @@
   </article>
 
   <script>
-    // Navegación suave SOLO para anclas (#...) — no afecta los portales
+    // Navegación suave SOLO para anclas internas
     document.querySelectorAll('.nav a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href');
@@ -491,31 +641,19 @@
       }
     });
 
-    // PDF: recargar visor (útil si se corta en móviles)
+    // PDF: recargar visor (por si se corta en móviles)
     const btnReload=document.getElementById('btnReloadPdf');
     const pdfObj=document.getElementById('pdfPlanos');
     btnReload?.addEventListener('click', ()=>{
       if(!pdfObj) return;
       const url=new URL(pdfObj.getAttribute('data') || pdfObj.data, window.location.href);
-      // truco cache-buster
-      url.searchParams.set('_', Date.now().toString());
+      url.searchParams.set('_', Date.now().toString()); // cache-buster
       pdfObj.setAttribute('data', url.pathname + url.search + url.hash);
     });
 
-    // Tests mínimos (no intrusivos)
+    // Tests mínimos
     console.assert(document.querySelector('.brand strong')?.textContent.includes('PLAN.T.A.R.'), 'Brand debe decir PLAN.T.A.R.');
     console.assert(!!document.querySelector('#site-nav'), 'La navegación principal debe existir');
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
