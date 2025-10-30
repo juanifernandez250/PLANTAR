@@ -18,14 +18,18 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    html,body{max-width:100%; overflow-x:hidden;}
+    /* ❌ Quité overflow-x:hidden para permitir scroll lateral si algo se pasa por 1px */
+    html,body{max-width:100%;}
     body{margin:0; background:var(--bg); color:var(--ink); font-family:"Source Serif 4", serif; line-height:1.65;}
     html{ scroll-padding-top: var(--navH); }
     .section, .masthead{ scroll-margin-top: var(--navH); }
 
+    /* Anti-overflow medios incrustados */
+    img,iframe,video,object{max-width:100%; height:auto; display:block}
+
     /* ======= Top bar / nav ======= */
     .toolbar{position:sticky; top:0; z-index:50; background:rgba(247,246,242,.85); backdrop-filter: blur(8px); border-bottom:1px solid var(--line)}
-    .toolbar-inner{max-width:1200px; margin:auto; display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center; padding:8px 16px}
+    .toolbar-inner{max-width:1200px; width:100%; margin:auto; display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center; padding:8px 16px}
     .brand{display:flex; align-items:center; gap:10px; font-family:Inter,system-ui,sans-serif}
     .mark{width:28px; height:28px; display:grid; place-items:center; border-radius:0; background:transparent}
     .mark-img{width:90%; height:90%; object-fit:contain; display:block}
@@ -41,7 +45,7 @@
     .nav a.secondary{background:#fff;}
 
     /* ======= Wrapper ======= */
-    .sheet{max-width:1200px; margin:18px auto 80px; background:var(--paper); box-shadow:var(--shadow); border:1px solid var(--line)}
+    .sheet{max-width:1200px; width:100%; margin:18px auto 80px; background:var(--paper); box-shadow:var(--shadow); border:1px solid var(--line)}
     .sheet header{
       display:grid; grid-template-columns: 1.35fr .9fr; gap:28px; padding:28px; border-bottom:1px solid var(--line);
       align-items: stretch;
@@ -57,8 +61,8 @@
 
     /* ======= Layout contenido ======= */
     .content{display:grid; grid-template-columns: 1fr 340px; gap:30px; padding:24px 28px}
-    .columns{columns: auto 1; column-gap:0}
-    @media (min-width:1200px){ .columns{columns:auto 1;} }
+    /* ⚠️ El multicolumn con 1 columna puede clippear hijos con overflow; lo cambio a block */
+    .columns{display:block}
     .section{break-inside: avoid; margin:0 0 24px}
     .section h2{font-family:"Playfair Display", serif; font-size:22px; margin:0 0 8px; line-height:1.2}
     .kicker{letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-family:Inter; font-weight:600; font-size:12px}
@@ -133,7 +137,8 @@
       appearance:none; border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:999px; font-family:Inter; font-size:14px; cursor:pointer; text-decoration:none; color:inherit;
     }
     .pdf-toolbar a.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
-    .pdf-wrap{width:100%; height:var(--pdfH); border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow)}
+    /* ✅ Permitimos scroll interno del plugin PDF en iOS/Android */
+    .pdf-wrap{width:100%; height:var(--pdfH); border:1px solid var(--line); border-radius:12px; overflow:auto; -webkit-overflow-scrolling:touch; background:#fff; box-shadow:var(--shadow)}
     .pdf-obj{width:100%; height:100%; border:0; display:block}
 
     /* ======= Print (A4) ======= */
@@ -143,7 +148,8 @@
       body{background:#fff}
       .sheet{box-shadow:none; border:none;}
       .content{grid-template-columns: 1fr .85fr; gap:18px}
-      .columns{columns:auto 1; column-gap:0}
+      /* sin multicolumn en print */
+      .columns{display:block}
       aside{top:0}
       a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px}
     }
@@ -168,8 +174,6 @@
         box-shadow: var(--shadow);
       }
       .nav a{display:block; width:100%; text-align:center;}
-      .nav a.primary{order:0}
-      .nav a.secondary{order:1}
 
       .masthead h1{font-size: clamp(22px, 6vw, 32px)}
       .masthead .subtitle{font-size: 14px}
@@ -189,6 +193,7 @@
       .nav a{padding:10px}
       .ph{max-height:42vh; border-radius:12px}
       .pdf-wrap{height:60vh}
+      .content{padding:12px}
     }
   </style>
 </head>
@@ -250,7 +255,7 @@
 
           <!-- Toolbar PDF -->
           <div class="pdf-toolbar" role="group" aria-label="Controles del documento Planos">
-            <a class="primary" href="planos.pdf" target="_blank" rel="noopener">Abrir planos en pestaña nueva</a>
+            <a class="primary" href="planos.pdf" target="_blank" rel="noopener">Abrir en pestaña nueva</a>
             <a href="planos.pdf" download>Descargar PDF</a>
             <button type="button" id="btnReloadPdf">Recargar visor</button>
           </div>
@@ -280,7 +285,7 @@
           <div class="kicker">Contexto</div>
           <h2>Ubicación y justificación del emplazamiento</h2>
           <p>La planta se emplazará en el predio del actual vaciadero municipal de Río Gallegos, ubicado aproximadamente a <strong>200&nbsp;m</strong> al oeste de la planta de tamices existente. El predio total tiene una superficie de <strong>13&nbsp;ha</strong>.</p>
-          <ul>
+        <ul>
             <li><strong>Aprovechamiento territorial:</strong> sitio ya impactado y degradado; se evita ocupar áreas vírgenes o sensibles.</li>
             <li><strong>Topografía:</strong> pendiente favorable para escurrimiento por gravedad, reduciendo bombeo.</li>
             <li><strong>Disposición de lodos:</strong> la localización sobre el vaciadero habilita sectores para disposición final controlada de barros tratados.</li>
@@ -298,7 +303,7 @@
               <tbody>
                 <tr><td>Norma principal (técnica)</td><td>ex ENOHSA – Tomos I y II</td><td>Criterios de estudio y diseño por unidad</td></tr>
                 <tr><td>Normas específicas</td><td>IRAM · ISO · Metcalf &amp; Eddy</td><td>Materiales, calidad de agua, seguridad eléctrica, buenas prácticas</td></tr>
-                <tr><td>Ambientales y sanitarias (Santa Cruz)</td><td>Ley Prov. 2658 · Dec. 007/06</td><td>Uso del recurso hídrico y exigencias de vertido</td></tr>
+                <tr><td>Ambientales y sanitarias (SCZ)</td><td>Ley Prov. 2658 · Dec. 007/06</td><td>Uso del recurso hídrico y exigencias de vertido</td></tr>
                 <tr><td>Residuos</td><td>Ley Nac. 24.051</td><td>Gestión de residuos peligrosos (si aplica a lodos)</td></tr>
               </tbody>
             </table>
@@ -436,7 +441,7 @@
               </tbody>
             </table>
           </div>
-          <p><strong>Personal:</strong> 19 personas totales para operación, mantenimiento, calidad y gestión. Cobertura 24/7 con turnos rotativos.</p>
+          <p><strong>Dotación:</strong> 19 personas totales para operación, mantenimiento, calidad y gestión. Cobertura 24/7 con turnos rotativos.</p>
         </section>
 
         <!-- CALIDAD Y PROCESOS -->
@@ -539,7 +544,7 @@
           </ol>
         </section>
 
-        <!-- MULTIMEDIA (opcional) -->
+        <!-- MULTIMEDIA -->
         <section class="section" id="multimedia">
           <div class="kicker">Multimedia</div>
           <h2>Videos explicativos</h2>
@@ -585,7 +590,7 @@
             <div class="stat"><b>TCAM</b><span>1,81&nbsp;%</span></div>
             <div class="stat"><b>Dotación</b><span>250 L/hab·día</span></div>
             <div class="stat"><b>Aporte</b><span>200 L/hab·día</span></div>
-            <div class="stat"><b>Personal</b><span>19 personas</span></div>
+            <div class="stat"><b>Dotación</b><span>19 personas</span></div>
           </div>
         </div>
 
@@ -615,7 +620,7 @@
   </article>
 
   <script>
-    // Navegación suave SOLO para anclas internas
+    // Navegación suave SOLO para anclas (#...) — no afecta los portales
     document.querySelectorAll('.nav a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href');
@@ -641,19 +646,22 @@
       }
     });
 
-    // PDF: recargar visor (por si se corta en móviles)
+    // PDF: recargar visor (útil si se corta en móviles)
     const btnReload=document.getElementById('btnReloadPdf');
     const pdfObj=document.getElementById('pdfPlanos');
     btnReload?.addEventListener('click', ()=>{
       if(!pdfObj) return;
       const url=new URL(pdfObj.getAttribute('data') || pdfObj.data, window.location.href);
-      url.searchParams.set('_', Date.now().toString()); // cache-buster
+      // truco cache-buster
+      url.searchParams.set('_', Date.now().toString());
       pdfObj.setAttribute('data', url.pathname + url.search + url.hash);
     });
 
-    // Tests mínimos
+    // Tests mínimos (no intrusivos)
     console.assert(document.querySelector('.brand strong')?.textContent.includes('PLAN.T.A.R.'), 'Brand debe decir PLAN.T.A.R.');
     console.assert(!!document.querySelector('#site-nav'), 'La navegación principal debe existir');
   </script>
 </body>
 </html>
+
+
